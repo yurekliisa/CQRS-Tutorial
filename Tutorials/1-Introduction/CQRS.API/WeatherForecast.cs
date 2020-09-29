@@ -1,6 +1,6 @@
 using System;
 
-namespace CQRS
+namespace CQRS.API
 {
     public class WeatherForecast
     {

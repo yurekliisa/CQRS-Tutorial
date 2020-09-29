@@ -7,16 +7,16 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["CQRS/CQRS.csproj", "CQRS/"]
-RUN dotnet restore "CQRS/CQRS.csproj"
+COPY ["CQRS.API/CQRS.API.csproj", "CQRS.API/"]
+RUN dotnet restore "CQRS.API/CQRS.API.csproj"
 COPY . .
-WORKDIR "/src/CQRS"
-RUN dotnet build "CQRS.csproj" -c Release -o /app/build
+WORKDIR "/src/CQRS.API"
+RUN dotnet build "CQRS.API.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "CQRS.csproj" -c Release -o /app/publish
+RUN dotnet publish "CQRS.API.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "CQRS.dll"]
+ENTRYPOINT ["dotnet", "CQRS.API.dll"]
