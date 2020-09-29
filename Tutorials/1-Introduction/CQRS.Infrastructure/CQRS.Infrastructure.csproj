@@ -3,6 +3,15 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20200929123456_Init_DB.cs" />
+    <Compile Remove="Migrations\20200929123456_Init_DB.Designer.cs" />
+    <Compile Remove="Migrations\20200929123647_Init_DB.cs" />
+    <Compile Remove="Migrations\20200929123647_Init_DB.Designer.cs" />
+    <Compile Remove="Migrations\20200929123901_Init_DB.cs" />
+    <Compile Remove="Migrations\20200929123901_Init_DB.Designer.cs" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.8">
@@ -14,5 +23,8 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CQRS.Domain\CQRS.Domain.csproj" />
   </ItemGroup>
 </Project>
