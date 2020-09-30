@@ -14,9 +14,12 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.1" />
+
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CQRS.Application\CQRS.Application.csproj" />
     <ProjectReference Include="..\CQRS.Infrastructure\CQRS.Infrastructure.csproj" />
   </ItemGroup>
 
