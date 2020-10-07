@@ -1,8 +1,5 @@
-﻿using CQRS.Application.Vehicles.CommandHandlers;
+﻿using CQRS.Application.Vehicles.CommandHandlers.Dto;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CQRS.Application.Vehicles.Commands
 {
@@ -11,15 +8,5 @@ namespace CQRS.Application.Vehicles.Commands
         public string Brand { get; set; }
         public string Model { get; set; }
         public int CategoryId { get; set; }
-        //public CreateVehicleCommand(
-        //        string brand,
-        //        string model,
-        //        int categoryId
-        //    )
-        //{
-        //    Brand = brand;
-        //    Model = model;
-        //    CategoryId = categoryId;
-        //}
     }
 }

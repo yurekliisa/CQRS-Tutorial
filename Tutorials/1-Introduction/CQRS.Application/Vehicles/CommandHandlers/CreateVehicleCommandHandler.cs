@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CQRS.Application.Interfaces;
+using CQRS.Application.Vehicles.CommandHandlers.Dto;
 using CQRS.Application.Vehicles.Commands;
 using CQRS.Domain.Entities;
 using MediatR;

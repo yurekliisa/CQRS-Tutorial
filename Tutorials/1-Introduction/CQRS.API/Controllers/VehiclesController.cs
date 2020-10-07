@@ -25,11 +25,39 @@ namespace CQRS.API.Controllers
             return Ok(vehicles);
         }
 
+        [HttpGet("{vehicleId}")]
+        public async Task<IActionResult> GetVehicleById(int vehicleId)
+        {
+            var vehicle = await _mediator.Send(new GetVehicleQuery() { Id = vehicleId });
+            return Ok(vehicle);
+        }
+
         [HttpPost]
         public async Task<IActionResult> CreateVehicle([FromBody] CreateVehicleCommand input)
         {
             var isCreated = await _mediator.Send(input);
             return Ok(isCreated);
+        }
+
+        [HttpPut("[action]")]
+        public async Task<ActionResult> UpdateVehicle(int id, UpdateVehicleCommand command)
+        {
+            if (id != command.Id)
+            {
+                return BadRequest();
+            }
+
+            await _mediator.Send(command);
+
+            return NoContent();
+        }
+
+
+        [HttpDelete("{vehicleId}")]
+        public async Task<ActionResult> Delete(int vehicleId)
+        {
+            await _mediator.Send(new DeleteVehicleCommand { Id = vehicleId });
+            return NoContent();
         }
     }
 }

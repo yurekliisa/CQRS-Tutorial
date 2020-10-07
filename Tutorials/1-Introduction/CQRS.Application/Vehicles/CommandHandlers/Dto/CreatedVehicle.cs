@@ -1,4 +1,4 @@
-﻿namespace CQRS.Application.Vehicles.CommandHandlers
+﻿namespace CQRS.Application.Vehicles.CommandHandlers.Dto
 {
     public class CreatedVehicle
     {
