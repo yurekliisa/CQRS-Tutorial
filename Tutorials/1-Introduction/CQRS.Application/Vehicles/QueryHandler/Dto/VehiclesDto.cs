@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CQRS.Application.VehiclesService.Dtos
+﻿namespace CQRS.Application.Vehicles.QueryHandler.Dto
 {
     public class VehiclesDto
     {

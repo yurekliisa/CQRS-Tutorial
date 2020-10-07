@@ -1,4 +1,5 @@
-﻿using CQRS.Domain.Entities;
+﻿using CQRS.Application.Interfaces;
+using CQRS.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace CQRS.Infrastructure.Context
 {
-    public class CQRSContext:DbContext
+    public class CQRSContext:DbContext, IContext
     {
         public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<Category> Categories { get; set; }
@@ -14,6 +15,5 @@ namespace CQRS.Infrastructure.Context
         public CQRSContext(DbContextOptions<CQRSContext> options):base(options)
         {
         }
-
     }
 }

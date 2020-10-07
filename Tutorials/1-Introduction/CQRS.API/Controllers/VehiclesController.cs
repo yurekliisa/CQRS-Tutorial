@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using CQRS.Application.VehiclesService;
-using CQRS.Application.VehiclesService.Dtos;
+﻿using System.Threading.Tasks;
+using CQRS.Application.Vehicles.Commands;
+using CQRS.Application.Vehicles.Queries;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace CQRS.API.Controllers
 {
@@ -13,27 +10,26 @@ namespace CQRS.API.Controllers
     [Route("[controller]")]
     public class VehiclesController : ControllerBase
     {
-        private readonly IVehiclesService _vehiclesService;
-
+        private readonly IMediator _mediator;
         public VehiclesController(
-            IVehiclesService vehiclesService
+                IMediator mediator
             )
         {
-            _vehiclesService = vehiclesService;
+            _mediator = mediator;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAllVehicles()
         {
-            var result = await _vehiclesService.GetAllVehicles();
-            return Ok(result);
+            var vehicles = await _mediator.Send(new GetAllVehiclesQuery());
+            return Ok(vehicles);
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateVehicle([FromBody] CreateVehicleDto input)
+        public async Task<IActionResult> CreateVehicle([FromBody] CreateVehicleCommand input)
         {
-            var result = await _vehiclesService.InsertVehicle(input);
-            return Ok(result);
+            var isCreated = await _mediator.Send(input);
+            return Ok(isCreated);
         }
     }
 }

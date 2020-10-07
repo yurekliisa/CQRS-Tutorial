@@ -1,19 +1,19 @@
 ﻿using AutoMapper;
-using CQRS.Application.CategoryService.Dtos;
-using CQRS.Application.VehiclesService.Dtos;
+using CQRS.Application.Vehicles.Commands;
+using CQRS.Application.Vehicles.QueryHandler.Dto;
 using CQRS.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CQRS.Application.AutoMapper
+namespace CQRS.Application.Mapping
 {
     public class AutoMapperProfile : Profile
     {
         public AutoMapperProfile()
         {
             CreateMap<Vehicle, VehiclesDto>();
-            CreateMap<Category, CategoryDto>();
+            CreateMap<CreateVehicleCommand, Vehicle>();
         }
     }
 }
